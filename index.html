@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>History Clearance</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>History Clearance</h1>
+        <p>Find and clear history by site or keyword.</p>
+      </header>
+      <form id="search-form">
+        <label for="site">Website or keyword</label>
+        <div class="search-row">
+          <input id="site" type="text" placeholder="facebook.com or recipes" autocomplete="off" spellcheck="false" required aria-describedby="hint" autofocus>
+          <button id="search" type="submit">Find history</button>
+        </div>
+        <p id="hint" class="small">Domains include subdomains. Keywords match titles and URLs. Automatically detected.</p>
+      </form>
+      <p id="status" role="status" aria-live="polite">Enter a website or keyword to see matching history.</p>
+      <section id="results" hidden aria-label="Matching history">
+        <div class="results-header">
+          <h2 id="count"></h2>
+          <button id="delete" type="button" class="danger">Delete all matches</button>
+        </div>
+        <p class="small">Each page shows its latest visit. Deleting a page removes all of its visits.</p>
+        <ul id="history"></ul>
+        <button id="more" type="button" hidden>Show more</button>
+      </section>
+      <footer>No tracking. No uploads. Cookies and saved passwords stay untouched.</footer>
+    </main>
+    <dialog id="confirmation" aria-labelledby="confirm-title" aria-describedby="confirm-message">
+      <h2 id="confirm-title">Delete this history?</h2>
+      <p id="confirm-message"></p>
+      <p class="small">This cannot be undone. Keep this tab open until deletion finishes.</p>
+      <form method="dialog" class="dialog-actions">
+        <button value="cancel" autofocus>Cancel</button>
+        <button value="delete" class="danger">Delete history</button>
+      </form>
+    </dialog>
+  </body>
+</html>
