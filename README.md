@@ -2,6 +2,8 @@
 
 A minimal Chrome extension to review and delete history by site or keyword, with a black-and-burgundy interface.
 
+![History Clearance search page with a website-or-keyword search box and privacy information](docs/screenshot.png)
+
 ## Add to Google Chrome
 
 This extension is installed locally, not through the Chrome Web Store. Use desktop Google Chrome; no build step or Node.js installation is needed to use it.
