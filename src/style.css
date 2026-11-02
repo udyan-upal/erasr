@@ -1,0 +1,128 @@
+@import "tailwindcss" source(none);
+@source "../index.html";
+@source "../app.js";
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("./assets/manrope-latin.woff2") format("woff2");
+}
+
+@theme {
+  --font-sans: Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Black + burgundy is intentional, independent of the OS theme.
+   Radius scale: 8px controls, 16px panels/dialog, pill status badges. */
+@layer base {
+  :root {
+    color-scheme: dark;
+    --bg: #101012;
+    --surface: #171619;
+    --text: #f1edef;
+    --muted: #a8a1a6;
+    --line: #302a2f;
+    --accent: #842a45;
+    --accent-hover: #983450;
+    --accent-light: #e9a7bd;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 14px;
+  }
+  body { margin: 0; }
+  button, input { font: inherit; }
+  button {
+    border: 1px solid #41343c;
+    border-radius: 8px;
+    background: #211c21;
+    color: var(--text);
+    padding: 10px 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  button:hover { background: #2d242b; border-color: #6b4657; }
+  button:active { transform: scale(.98); }
+  button:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+  :focus-visible { outline: 2px solid var(--accent-light); outline-offset: 4px; }
+  input { border: 0; outline: 0; background: transparent; color: var(--text); }
+  input::placeholder { color: #a298a0; }
+  input:focus-visible { outline: none; }
+  ::selection { background: #842a45; color: #fbf6f8; }
+  [hidden] { display: none !important; }
+}
+
+@layer components {
+  .topbar { border-bottom: 1px solid var(--line); }
+  .brand { color: var(--text); text-decoration: none; }
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #633044;
+    border-radius: 10px;
+    background: #301c25;
+    color: #f3d6e0;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+  .brand-mark span { color: #d785a0; }
+  .privacy-badge { color: #c7b9c1; border: 1px solid var(--line); border-radius: 100px; padding: 7px 11px; }
+  .status-dot, .footer-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #c47b95; flex-shrink: 0; }
+  .eyebrow { color: #d596ae; font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+  h1 { line-height: 1.15; }
+  .heading-muted { color: #a39aa2; }
+  .intro-copy, .small, footer { color: var(--muted); }
+  .small { font-size: 12px; }
+  .search-panel { border: 1px solid #49303e; border-radius: 16px; background: #1c171c; box-shadow: 0 12px 44px #08060833; }
+  .auto-label { color: #c896aa; }
+  .input-wrap { border: 1px solid #483943; border-radius: 8px; background: #121114; }
+  .input-wrap:focus-within { border-color: #c47b95; box-shadow: 0 0 0 3px #842a4529; }
+  .search-symbol { position: relative; display: inline-block; width: 13px; height: 13px; border: 1.5px solid #aa929f; border-radius: 50%; flex-shrink: 0; margin-right: 3px; }
+  .search-symbol::after { content: ""; position: absolute; width: 6px; height: 1.5px; background: #aa929f; transform: rotate(45deg); right: -5px; bottom: -2px; }
+  kbd { color: #a89ca4; border: 1px solid #3d333b; border-radius: 4px; padding: 1px 5px; }
+  .primary-button { border-color: #a14564; background: var(--accent); color: #fff5f8; box-shadow: inset 0 1px 0 #ffffff12; }
+  .primary-button:hover { border-color: #bd5e7d; background: var(--accent-hover); }
+  .status-line { width: 13px; height: 2px; background: #95647a; flex-shrink: 0; }
+  #status { overflow-wrap: anywhere; }
+  .results-panel { overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+  .danger-outline { color: #f0b1c7; background: #321d27; border-color: #603146; }
+  .danger-outline:hover { background: #482333; border-color: #9a4c6a; }
+  #history li { display: flex; align-items: center; gap: 24px; border-top: 1px solid var(--line); padding: 22px 28px; }
+  #history li:hover { background: #1d191e; }
+  .page-details { flex: 1; min-width: 0; }
+  .page-title { display: block; width: fit-content; max-width: 100%; color: #ede6eb; font-size: 13px; font-weight: 600; overflow-wrap: anywhere; text-decoration: none; }
+  .page-title:hover { color: #f2b5cb; text-decoration: underline; text-underline-offset: 4px; }
+  .page-url { margin-top: 5px; color: #b0a0ac; font-size: 11px; overflow-wrap: anywhere; }
+  time { display: block; margin-top: 9px; color: #aaa0a7; font-size: 10px; font-variant-numeric: tabular-nums; }
+  .delete-item { color: #d8b2c2; background: transparent; border-color: #483440; padding: 7px 12px; font-size: 11px; }
+  .delete-item:hover { color: #f4c9da; background: #3b202d; border-color: #875069; }
+  .results-note { border-top: 1px solid var(--line); background: #141215; }
+  .reassurance, footer { border-color: var(--line); }
+  .reassurance h2 { color: #d3c8d0; }
+  footer { color: #a1969f; }
+  dialog { position: fixed; inset: 0; margin: auto; width: min(460px, calc(100% - 32px)); padding: 30px; border: 1px solid #694052; border-radius: 16px; background: #1c171c; color: var(--text); overflow-wrap: anywhere; box-shadow: 0 24px 100px #08060880; }
+  dialog::backdrop { background: #080609c9; backdrop-filter: blur(5px); }
+  .dialog-mark { align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 10px; border: 1px solid #77334e; background: #3b1d2c; color: #f2b1c9; font-size: 20px; font-weight: 500; }
+  #confirm-message { color: #d5c6cf; white-space: pre-line; }
+}
+
+@media (max-width: 639px) {
+  #history li { gap: 12px; padding: 20px; align-items: flex-start; }
+  .privacy-badge { font-size: 10px; padding: 6px 8px; }
+  dialog { padding: 24px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  button, .input-wrap, .page-title { transition: color 150ms, background-color 150ms, border-color 150ms, transform 150ms; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  dialog::backdrop { background: #100d10; backdrop-filter: none; }
+}

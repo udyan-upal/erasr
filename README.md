@@ -1,6 +1,6 @@
 # History Clearance
 
-A minimal, dependency-free Chrome extension to review and delete history by site or keyword.
+A minimal Chrome extension to review and delete history by site or keyword, with a black-and-burgundy interface.
 
 ## Add to Google Chrome
 
@@ -53,7 +53,20 @@ Enter `facebook.com` (or a full URL), or a keyword such as `recipes`, in the sam
 - Searches all history Chrome still retains, not only the last day. Results are unique URLs with their latest visit, not individual visits. **Show more** displays another 100 pages; deletion applies to every matched page, including those not yet displayed.
 - Use **Delete** beside any result to remove only that page's history, or **Delete all matches** to remove the full search result. Both ask for confirmation.
 - Deletion is permanent and removes all visits for each matching URL. It does not clear cookies, cache, passwords, bookmarks, or activity stored separately by websites or your Google account. Chrome Sync may propagate history deletions to other devices.
-- Only the `history` permission is requested. Nothing is uploaded or tracked. No host permissions, content scripts, external assets, or build step.
+- Only the `history` permission is requested. Nothing is uploaded or tracked. No host permissions, content scripts, or runtime network requests. Styles and fonts are bundled; no build step is needed to install the extension.
+
+## Styling and development
+
+The interface uses **Tailwind CSS v4** and **Manrope** from Google Fonts. Both are served locally: Manifest V3 blocks the Tailwind browser/CDN script, and bundling the font avoids external requests. Manrope's license is included in `assets/Manrope-OFL.txt`.
+
+`style.css` is the committed, generated stylesheet. To change the design, edit `src/style.css` or the utility classes in `index.html`, then rebuild with Node.js 20 or later:
+
+```sh
+npm ci
+npm run build:css
+```
+
+Reload the extension and reopen its tab to see the changes. The page intentionally uses a dark black-and-burgundy palette regardless of system theme. Runtime JavaScript remains dependency-free.
 
 ## Tests
 

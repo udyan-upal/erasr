@@ -7,39 +7,83 @@
     <link rel="stylesheet" href="style.css">
     <script type="module" src="app.js"></script>
   </head>
-  <body>
-    <main>
-      <header>
-        <h1>History Clearance</h1>
-        <p>Find and clear history by site or keyword.</p>
+  <body class="min-h-dvh antialiased">
+    <div class="app-shell mx-auto flex min-h-dvh max-w-5xl flex-col px-5 sm:px-10">
+      <header class="topbar flex items-center justify-between gap-4 py-6 sm:py-8">
+        <a href="index.html" class="brand flex items-center gap-3" aria-label="History Clearance home">
+          <span class="brand-mark" aria-hidden="true">hc<span>.</span></span>
+          <span class="text-sm font-bold tracking-tight">History Clearance</span>
+        </a>
+        <span class="privacy-badge flex items-center gap-2 text-xs"><span class="status-dot" aria-hidden="true"></span> Local &amp; private</span>
       </header>
-      <form id="search-form">
-        <label for="site">Website or keyword</label>
-        <div class="search-row">
-          <input id="site" type="text" placeholder="facebook.com or recipes" autocomplete="off" spellcheck="false" required aria-describedby="hint" autofocus>
-          <button id="search" type="submit">Find history</button>
+
+      <main class="flex-1 pb-16 pt-12 sm:pt-16">
+        <div class="intro mb-9 sm:mb-10">
+          <p class="eyebrow mb-4">A little less history.</p>
+          <h1 class="text-4xl font-semibold tracking-[-0.055em] sm:text-5xl">Keep what matters.<br><span class="heading-muted">Clear what doesn’t.</span></h1>
+          <p class="intro-copy mt-5 max-w-lg text-sm leading-7">Find a site or a keyword. Review your history, then decide what goes.</p>
         </div>
-        <p id="hint" class="small">Domains include subdomains. Keywords match titles and URLs. Automatically detected.</p>
-      </form>
-      <p id="status" role="status" aria-live="polite">Enter a website or keyword to see matching history.</p>
-      <section id="results" hidden aria-label="Matching history">
-        <div class="results-header">
-          <h2 id="count"></h2>
-          <button id="delete" type="button" class="danger">Delete all matches</button>
+
+        <form id="search-form" class="search-panel p-5 sm:p-7">
+          <div class="mb-3 flex items-center justify-between gap-3">
+            <label for="site" class="text-xs font-semibold">Website or keyword</label>
+            <span class="auto-label text-[11px]">Auto-detected</span>
+          </div>
+          <div class="search-row flex flex-col gap-3 sm:flex-row">
+            <div class="input-wrap flex min-w-0 flex-1 items-center gap-3 px-4">
+              <span class="search-symbol" aria-hidden="true"></span>
+              <input id="site" class="min-w-0 flex-1 py-4 text-sm" type="text" placeholder="facebook.com or a keyword…" autocomplete="off" spellcheck="false" required aria-describedby="hint" autofocus>
+              <kbd class="hidden text-[10px] sm:block" aria-hidden="true">↵</kbd>
+            </div>
+            <button id="search" class="primary-button px-6 py-3.5 text-sm" type="submit">Find history <span aria-hidden="true" class="ml-3">↗</span></button>
+          </div>
+          <p id="hint" class="small mt-4 leading-6">Sites include subdomains. Keywords match page titles and URLs.</p>
+        </form>
+
+        <div class="status-area flex items-start gap-3 px-1 py-6">
+          <span class="status-line mt-2" aria-hidden="true"></span>
+          <p id="status" class="small leading-6" role="status" aria-live="polite">Your history stays on your device. Search to get started.</p>
         </div>
-        <p class="small">Each page shows its latest visit. Deleting a page removes all of its visits.</p>
-        <ul id="history"></ul>
-        <button id="more" type="button" hidden>Show more</button>
-      </section>
-      <footer>No tracking. No uploads. Cookies and saved passwords stay untouched.</footer>
-    </main>
+
+        <section id="results" class="results-panel mt-3" hidden aria-label="Matching history">
+          <div class="results-header flex flex-col gap-4 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+            <div>
+              <h2 id="count" class="text-sm font-bold"></h2>
+              <p class="small mt-1">Latest visit shown for each page.</p>
+            </div>
+            <button id="delete" type="button" class="danger-outline self-start text-xs sm:self-auto">Delete all matches</button>
+          </div>
+          <ul id="history" class="m-0 list-none p-0"></ul>
+          <div class="px-5 sm:px-7"><button id="more" type="button" class="my-5 w-full text-xs" hidden>Show more</button></div>
+          <p class="results-note small px-5 py-4 sm:px-7">Deleting a page removes all its visits. This cannot be undone.</p>
+        </section>
+
+        <aside class="reassurance mt-8 grid gap-5 border-t pt-6 sm:grid-cols-2 sm:gap-10" aria-label="Privacy information">
+          <div>
+            <h2 class="text-xs font-semibold">Only what you choose</h2>
+            <p class="small mt-2 leading-6">Review every match. Delete one page or all results, always with confirmation.</p>
+          </div>
+          <div>
+            <h2 class="text-xs font-semibold">The rest stays yours</h2>
+            <p class="small mt-2 leading-6">Your cookies, saved passwords, and bookmarks stay untouched.</p>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="flex flex-wrap items-center justify-between gap-3 border-t py-6 text-[11px]">
+        <span>Less history. More control.</span>
+        <span class="flex items-center gap-2"><span class="footer-dot" aria-hidden="true"></span>No tracking. No uploads.</span>
+      </footer>
+    </div>
+
     <dialog id="confirmation" aria-labelledby="confirm-title" aria-describedby="confirm-message">
-      <h2 id="confirm-title">Delete this history?</h2>
-      <p id="confirm-message"></p>
-      <p class="small">This cannot be undone. Keep this tab open until deletion finishes.</p>
-      <form method="dialog" class="dialog-actions">
-        <button value="cancel" autofocus>Cancel</button>
-        <button value="delete" class="danger">Delete history</button>
+      <span class="dialog-mark mb-6 inline-flex" aria-hidden="true">!</span>
+      <h2 id="confirm-title" class="text-xl font-semibold tracking-tight">Delete this history?</h2>
+      <p id="confirm-message" class="mt-4 text-sm leading-7"></p>
+      <p class="small mt-3 leading-6">This cannot be undone. Keep this tab open until deletion finishes.</p>
+      <form method="dialog" class="dialog-actions mt-7 flex justify-end gap-3">
+        <button value="cancel" class="text-xs" autofocus>Keep history</button>
+        <button value="delete" class="primary-button text-xs">Delete history</button>
       </form>
     </dialog>
   </body>
