@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>History Clearance</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="app.js"></script>
   </head>
@@ -11,10 +13,10 @@
     <div class="app-shell mx-auto flex min-h-dvh max-w-5xl flex-col px-5 sm:px-10">
       <header class="topbar flex items-center justify-between gap-4 py-6 sm:py-8">
         <a href="index.html" class="brand flex items-center gap-3" aria-label="History Clearance home">
-          <span class="brand-mark" aria-hidden="true">hc<span>.</span></span>
+          <img class="brand-mark" src="assets/icon.svg" width="38" height="38" alt="">
           <span class="text-sm font-bold tracking-tight">History Clearance</span>
         </a>
-        <span class="privacy-badge flex items-center gap-2 text-xs"><span class="status-dot" aria-hidden="true"></span> Local &amp; private</span>
+        <span class="privacy-badge flex items-center gap-2 text-xs"><span class="icon icon-shield" aria-hidden="true"></span> Local &amp; private</span>
       </header>
 
       <main class="flex-1 pb-16 pt-12 sm:pt-16">
@@ -31,40 +33,40 @@
           </div>
           <div class="search-row flex flex-col gap-3 sm:flex-row">
             <div class="input-wrap flex min-w-0 flex-1 items-center gap-3 px-4">
-              <span class="search-symbol" aria-hidden="true"></span>
+              <span class="icon icon-search" aria-hidden="true"></span>
               <input id="site" class="min-w-0 flex-1 py-4 text-sm" type="text" placeholder="facebook.com or a keyword…" autocomplete="off" spellcheck="false" required aria-describedby="hint" autofocus>
-              <kbd class="hidden text-[10px] sm:block" aria-hidden="true">↵</kbd>
+              <kbd class="hidden text-[10px] sm:block" aria-hidden="true"><span class="icon icon-enter"></span></kbd>
             </div>
-            <button id="search" class="primary-button px-6 py-3.5 text-sm" type="submit">Find history <span aria-hidden="true" class="ml-3">↗</span></button>
+            <button id="search" class="primary-button px-6 py-3.5 text-sm" type="submit">Find history <span class="icon icon-arrow" aria-hidden="true"></span></button>
           </div>
           <p id="hint" class="small mt-4 leading-6">Sites include subdomains. Keywords match page titles and URLs.</p>
         </form>
 
         <div class="status-area flex items-start gap-3 px-1 py-6">
-          <span class="status-line mt-2" aria-hidden="true"></span>
+          <span class="icon icon-info mt-1" aria-hidden="true"></span>
           <p id="status" class="small leading-6" role="status" aria-live="polite">Your history stays on your device. Search to get started.</p>
         </div>
 
         <section id="results" class="results-panel mt-3" hidden aria-label="Matching history">
           <div class="results-header flex flex-col gap-4 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7">
             <div>
-              <h2 id="count" class="text-sm font-bold"></h2>
+              <div class="flex items-center gap-2"><span class="icon icon-history" aria-hidden="true"></span><h2 id="count" class="text-sm font-bold"></h2></div>
               <p class="small mt-1">Latest visit shown for each page.</p>
             </div>
-            <button id="delete" type="button" class="danger-outline self-start text-xs sm:self-auto">Delete all matches</button>
+            <button id="delete" type="button" class="danger-outline self-start text-xs sm:self-auto"><span class="icon icon-trash" aria-hidden="true"></span>Delete all matches</button>
           </div>
           <ul id="history" class="m-0 list-none p-0"></ul>
-          <div class="px-5 sm:px-7"><button id="more" type="button" class="my-5 w-full text-xs" hidden>Show more</button></div>
-          <p class="results-note small px-5 py-4 sm:px-7">Deleting a page removes all its visits. This cannot be undone.</p>
+          <div class="px-5 sm:px-7"><button id="more" type="button" class="my-5 w-full text-xs" hidden>Show more<span class="icon icon-down" aria-hidden="true"></span></button></div>
+          <p class="results-note small flex items-start gap-2 px-5 py-4 sm:px-7"><span class="icon icon-warning" aria-hidden="true"></span><span>Deleting a page removes all its visits. This cannot be undone.</span></p>
         </section>
 
         <aside class="reassurance mt-8 grid gap-5 border-t pt-6 sm:grid-cols-2 sm:gap-10" aria-label="Privacy information">
           <div>
-            <h2 class="text-xs font-semibold">Only what you choose</h2>
+            <h2 class="flex items-center gap-2 text-xs font-semibold"><span class="icon icon-check" aria-hidden="true"></span>Only what you choose</h2>
             <p class="small mt-2 leading-6">Review every match. Delete one page or all results, always with confirmation.</p>
           </div>
           <div>
-            <h2 class="text-xs font-semibold">The rest stays yours</h2>
+            <h2 class="flex items-center gap-2 text-xs font-semibold"><span class="icon icon-lock" aria-hidden="true"></span>The rest stays yours</h2>
             <p class="small mt-2 leading-6">Your cookies, saved passwords, and bookmarks stay untouched.</p>
           </div>
         </aside>
@@ -72,18 +74,18 @@
 
       <footer class="flex flex-wrap items-center justify-between gap-3 border-t py-6 text-[11px]">
         <span>Less history. More control.</span>
-        <span class="flex items-center gap-2"><span class="footer-dot" aria-hidden="true"></span>No tracking. No uploads.</span>
+        <span class="flex items-center gap-2"><span class="icon icon-shield" aria-hidden="true"></span>No tracking. No uploads.</span>
       </footer>
     </div>
 
     <dialog id="confirmation" aria-labelledby="confirm-title" aria-describedby="confirm-message">
-      <span class="dialog-mark mb-6 inline-flex" aria-hidden="true">!</span>
+      <span class="dialog-mark mb-6 inline-flex" aria-hidden="true"><span class="icon icon-warning"></span></span>
       <h2 id="confirm-title" class="text-xl font-semibold tracking-tight">Delete this history?</h2>
       <p id="confirm-message" class="mt-4 text-sm leading-7"></p>
       <p class="small mt-3 leading-6">This cannot be undone. Keep this tab open until deletion finishes.</p>
       <form method="dialog" class="dialog-actions mt-7 flex justify-end gap-3">
         <button value="cancel" class="text-xs" autofocus>Keep history</button>
-        <button value="delete" class="primary-button text-xs">Delete history</button>
+        <button value="delete" class="primary-button text-xs"><span class="icon icon-trash" aria-hidden="true"></span>Delete history</button>
       </form>
     </dialog>
   </body>

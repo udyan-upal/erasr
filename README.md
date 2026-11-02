@@ -59,6 +59,8 @@ Enter `facebook.com` (or a full URL), or a keyword such as `recipes`, in the sam
 
 The interface uses **Tailwind CSS v4** and **Manrope** from Google Fonts. Both are served locally: Manifest V3 blocks the Tailwind browser/CDN script, and bundling the font avoids external requests. Manrope's license is included in `assets/Manrope-OFL.txt`.
 
+Interface icons are bundled SVGs from **Phosphor Icons**, with attribution in `assets/icons/LICENSE`. The favicon and Chrome extension icons use the same history symbol and burgundy palette; PNG variants are included at 16, 32, 48, and 128 pixels.
+
 `style.css` is the committed, generated stylesheet. To change the design, edit `src/style.css` or the utility classes in `index.html`, then rebuild with Node.js 20 or later:
 
 ```sh

@@ -28,6 +28,9 @@ function showMore() {
   const fragment = document.createDocumentFragment();
   for (const entry of entries.slice(shown, shown + 100)) {
     const item = document.createElement("li");
+    const pageIcon = document.createElement("span");
+    pageIcon.className = "page-icon icon icon-globe";
+    pageIcon.setAttribute("aria-hidden", "true");
     const title = document.createElement("a");
     title.className = "page-title";
     title.href = entry.url;
@@ -44,11 +47,15 @@ function showMore() {
     deleteItem.type = "button";
     deleteItem.className = "delete-item";
     deleteItem.textContent = "Delete";
+    const trashIcon = document.createElement("span");
+    trashIcon.className = "icon icon-trash";
+    trashIcon.setAttribute("aria-hidden", "true");
+    deleteItem.append(trashIcon);
     deleteItem.setAttribute("aria-label", `Delete history for ${entry.title || entry.url}`);
     deleteItem.addEventListener("click", () => {
       confirmDeletion([entry], `Remove all visits to this page?\n${entry.url}`);
     });
-    item.append(details, deleteItem);
+    item.append(pageIcon, details, deleteItem);
     if (entry.lastVisitTime) {
       const time = document.createElement("time");
       const date = new Date(entry.lastVisitTime);
