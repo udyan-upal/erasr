@@ -1,5 +1,8 @@
 # erasr
 
+[![CI](https://github.com/udyan-upal/erasr/actions/workflows/ci.yml/badge.svg)](https://github.com/udyan-upal/erasr/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A minimal Chrome extension to review and delete history by site or keyword, with a black-and-burgundy interface.
 
 ![erasr search page with a website-or-keyword search box and privacy information](docs/screenshot.png)
@@ -74,10 +77,24 @@ Reload the extension and reopen its tab to see the changes. The page intentional
 
 ## Tests
 
-With Node.js 18 or later:
+With Node.js 20 or later:
 
 ```sh
 node --test tests/*.test.mjs
 ```
 
 These test domain normalization, automatic search detection, safe hostname matching, and individual/bulk deletion flows with mocked browser APIs and UI elements. Verify actual history access and deletion in Chrome after loading the extension.
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, project principles, and pull request guidelines. By participating, you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+Good first contributions include documentation fixes, additional test cases, and small UI improvements. For larger changes, please open an issue first.
+
+## Security
+
+Please report security vulnerabilities privately through GitHub's [Security Advisories](https://github.com/udyan-upal/erasr/security/advisories/new). See [SECURITY.md](SECURITY.md) for details on scope and supported versions.
+
+## License
+
+Released under the [MIT License](LICENSE).

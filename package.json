@@ -3,6 +3,19 @@
   "version": "1.1.0",
   "private": true,
   "description": "A local-first Chrome history utility",
+  "license": "MIT",
+  "author": "Udyan Saha Upal (https://github.com/udyan-upal)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udyan-upal/erasr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/udyan-upal/erasr/issues"
+  },
+  "homepage": "https://github.com/udyan-upal/erasr#readme",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build:css": "tailwindcss -i ./src/style.css -o ./style.css --minify",
     "test": "node --test tests/*.test.mjs"

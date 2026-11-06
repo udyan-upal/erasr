@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Setup and usage help
+    url: https://github.com/udyan-upal/erasr#readme
+    about: Read the installation and usage instructions before opening an issue.
+  - name: Report a security vulnerability
+    url: https://github.com/udyan-upal/erasr/security/advisories/new
+    about: Please report security issues privately, not as public issues.
