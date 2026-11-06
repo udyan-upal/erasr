@@ -1,6 +1,6 @@
 # Product roadmap
 
-Keep History Clearance minimal, private, and local-first. The items below are planned features, not currently available functionality.
+Keep erasr minimal, private, and local-first. The items below are planned features, not currently available functionality.
 
 ## Priority 1: Scheduled cleanup
 

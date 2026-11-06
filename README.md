@@ -1,8 +1,8 @@
-# History Clearance
+# erasr
 
 A minimal Chrome extension to review and delete history by site or keyword, with a black-and-burgundy interface.
 
-![History Clearance search page with a website-or-keyword search box and privacy information](docs/screenshot.png)
+![erasr search page with a website-or-keyword search box and privacy information](docs/screenshot.png)
 
 ## Add to Google Chrome
 
@@ -14,7 +14,7 @@ This extension is installed locally, not through the Chrome Web Store. Use deskt
 - Or clone the repository:
 
   ```sh
-  git clone https://github.com/udyan-upal/history-clearance.git
+  git clone https://github.com/udyan-upal/erasr.git
   ```
 
 ### 2. Load it in Chrome
@@ -22,25 +22,25 @@ This extension is installed locally, not through the Chrome Web Store. Use deskt
 1. Type `chrome://extensions` into Chrome's address bar and press Enter.
 2. Turn on **Developer mode** in the top-right corner.
 3. Click **Load unpacked**.
-4. Select the extracted or cloned `history-clearance` folder. Choose the folder that contains `manifest.json`, not the ZIP file or its parent folder.
-5. Check that **History Clearance** appears and is enabled. Chrome may describe its history permission as access to your browsing history; this is required to search and delete entries.
+4. Select the extracted or cloned `erasr` folder. Choose the folder that contains `manifest.json`, not the ZIP file or its parent folder.
+5. Check that **erasr** appears and is enabled. Chrome may describe its history permission as access to your browsing history; this is required to search and delete entries.
 
 ### 3. Open the extension
 
 1. Click Chrome's **Extensions** button (the puzzle-piece icon beside the address bar).
-2. Optionally click the pin beside **History Clearance** to keep it on the toolbar.
-3. Click **History Clearance** to open its search page in a new tab.
+2. Optionally click the pin beside **erasr** to keep it on the toolbar.
+3. Click **erasr** to open its search page in a new tab.
 
 Keep the extension folder in place. Moving or deleting it can stop the extension from loading.
 
 ### Update or remove
 
 - **Update:** download and extract the latest files into the same folder, or run `git pull` inside the cloned folder. Then open `chrome://extensions`, click the extension's **Reload** button, and close and reopen its search tab.
-- **Remove:** open `chrome://extensions` and click **Remove** on **History Clearance**. Removing the extension does not restore deleted history.
+- **Remove:** open `chrome://extensions` and click **Remove** on **erasr**. Removing the extension does not restore deleted history.
 
 ### Troubleshooting
 
-- **“Manifest file is missing or unreadable”:** select the folder containing `manifest.json`. For ZIP downloads, extract the archive first; the folder may be named `history-clearance-main`.
+- **“Manifest file is missing or unreadable”:** select the folder containing `manifest.json`. For ZIP downloads, extract the archive first; the folder may be named `erasr-main`.
 - **Extension not visible on the toolbar:** open the puzzle-piece menu and pin it.
 - **Changes not appearing:** reload the extension on `chrome://extensions`, then reopen its tab.
 - **Developer mode or Load unpacked is unavailable:** your browser may be managed by an organization. Ask your administrator whether local extensions are allowed.

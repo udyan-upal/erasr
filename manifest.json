@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "History Clearance",
+  "name": "erasr",
   "version": "1.1.0",
   "description": "Review and delete browsing history by site or keyword.",
   "permissions": ["history"],
@@ -11,7 +11,7 @@
     "128": "assets/icon-128.png"
   },
   "action": {
-    "default_title": "History Clearance",
+    "default_title": "erasr",
     "default_icon": {
       "16": "assets/icon-16.png",
       "32": "assets/icon-32.png"
