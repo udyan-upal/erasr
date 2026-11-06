@@ -60,6 +60,25 @@ Enter `facebook.com` (or a full URL), or a keyword such as `recipes`, in the sam
 - Deletion is permanent and removes all visits for each matching URL. It does not clear cookies, cache, passwords, bookmarks, or activity stored separately by websites or your Google account. Chrome Sync may propagate history deletions to other devices.
 - Only the `history` permission is requested. Nothing is uploaded or tracked. No host permissions, content scripts, or runtime network requests. Styles and fonts are bundled; no build step is needed to install the extension.
 
+## Architecture
+
+```mermaid
+flowchart TD
+    A["Toolbar action"] --> B["background.js<br/>service worker"]
+    B -->|"chrome.tabs.create"| C["index.html<br/>extension page"]
+    C --> D["app.js<br/>UI state, search, deletion"]
+    D -->|"findHistory(chrome.history, query, mode)"| E["history.mjs<br/>parse, validate, match, sort"]
+    E -->|"history.search({ startTime: 0, maxResults: 2147483647 })"| F["Chrome History API"]
+    F -->|"candidate entries"| E
+    E -->|"filtered, newest-first entries"| D
+    D --> G["Confirmation dialog"]
+    G -->|"delete confirmed"| H["chrome.history.deleteUrl(url)<br/>one reviewed URL at a time"]
+    H --> F
+    H -->|"refresh results"| D
+```
+
+`history.mjs` contains no Chrome calls; the API object is passed in, which keeps search logic unit-testable. All search and deletion happens locally through Chrome's History API — erasr makes no network requests.
+
 ## Styling and development
 
 The interface uses **Tailwind CSS v4** and **Manrope** from Google Fonts. Both are served locally: Manifest V3 blocks the Tailwind browser/CDN script, and bundling the font avoids external requests. Manrope's license is included in `assets/Manrope-OFL.txt`.
